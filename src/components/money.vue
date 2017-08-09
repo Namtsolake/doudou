@@ -25,20 +25,24 @@ import { Indicator } from 'mint-ui';
 			}
 		},
 		mounted(){
-			Indicator.open({
-			  text: '加载中...',
-			  spinnerType: 'fading-circle'
-			});
-			axios.get("/Service/callback.mi/OnlineLocationCinema/OnlineCinemasByCity.api?locationId=729&t=20178416402864779").then(res=>{
+			// Indicator.open({
+			//   text: '加载中...',
+			//   spinnerType: 'fading-circle'
+			// });
+			axios.get("/api/all").then(res=>{
 				console.log(res.data);
 				this.looplist8=res.data;
-				Indicator.close();
+				// Indicator.close();
 			})
 		}
 	}
 </script>
 
 <style scoped lang="scss">
+$ui-width: 750px;
+@function px2rem($px) {
+    @return $px/$ui-width*7.5rem;
+}
 	#money{
 		width:100%;
 		.yy{
@@ -56,22 +60,22 @@ import { Indicator } from 'mint-ui';
 						span{
 							display:inline-block;
 							position:absolute;
-							right:27px;
-							top:-7px;
+							right:px2rem(27px);
+							top:px2rem(-7px);
 							color:#f60;
 							font-weight: 100;
-							font-size:33px;
+							font-size:px2rem(33px);
 							span{
 								display:inline-block;
 								position:absolute;
-								right:70px;
-								top:7px;
+								right:px2rem(70px);
+								top:px2rem(7px);
 								font-size:25px;
 							}
 						}
 					}
 					p:nth-child(2){
-						padding-top:5px;
+						padding-top:px2rem(5px);
 						font-size:25px;
 						color:#ccc; 
 						white-space: wrap;
@@ -79,35 +83,35 @@ import { Indicator } from 'mint-ui';
 					}
 					span.tt{
 						background:url("http://static1.mtime.cn/html5/20170731152519/images/2014/i_cine_01.png") no-repeat;
-						width:57.6px;
-						height:57.6px;
+						width:px2rem(57.6px);
+						height:px2rem(57.6px);
 						display:inline-block;
-						margin-top:20px;
-						background-size: 45.6px;
+						margin-top:px2rem(20px);
+						background-size: px2rem(45.6px);
 					}
 					span.tt2{
 						background:url("http://static1.mtime.cn/html5/20170731152519/images/2014/is_cine_04.png") no-repeat;
-						width:57.6px;
-						height:57.6px;
+						width:px2rem(57.6px);
+						height:px2rem(57.6px);
 						display:inline-block;
-						margin-top:20px;
-						background-size: 45.6px;
+						margin-top:px2rem(20px);
+						background-size: px2rem(45.6px);
 					}
 					span.tt3{
 						background:url("http://static1.mtime.cn/html5/20170731152519/images/2014/is_cine_02.png") no-repeat;						
-						width:57.6px;
-						height:57.6px;
+						width:px2rem(57.6px);
+						height:px2rem(57.6px);
 						display:inline-block;
-						margin-top:20px;
-						background-size: 45.6px;
+						margin-top:px2rem(20px);
+						background-size: px2rem(45.6px);
 					}
 					span.tt4{
 						background:url("http://static1.mtime.cn/html5/20170731152519/images/2014/i_cine_03.png") no-repeat;
-						width:57.6px;
-						height:57.6px;
+						width:px2rem(57.6px);
+						height:px2rem(57.6px);
 						display:inline-block;
-						margin-top:20px;
-						background-size: 45.6px;
+						margin-top:px2rem(20px);
+						background-size: px2rem(45.6px);
 					}
 				}
 			}

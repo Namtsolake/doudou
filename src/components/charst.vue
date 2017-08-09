@@ -33,7 +33,7 @@
 				</div>
 			</li>
 		</ul>
-		<p>{{msg}}</p>					
+		<p class="loading">{{msg}}</p>					
 	</div>
 </template>
 
@@ -54,7 +54,7 @@ import { Indicator } from 'mint-ui';
 			  text: '加载中...',
 			  spinnerType: 'fading-circle'
 			});
-			axios.get(`/Service/callback.mi/TopList/TopListOfAll.api?pageIndex=${this.pageIndex}`).then(res=>{
+			axios.get(`/api/findcharst?pageIndex=${this.pageIndex}`).then(res=>{
 				this.looplist13=res.data.topLists;
 				this.total=res.data.totalCount;
 				Indicator.close();
@@ -67,7 +67,7 @@ import { Indicator } from 'mint-ui';
 					this.msg="以没有数据了";
 					return;
 				}
-				axios.get(`/Service/callback.mi/TopList/TopListOfAll.api?pageIndex=${this.pageIndex}`).then(res=>{
+				axios.get(`/api/findcharst?pageIndex=${this.pageIndex}`).then(res=>{
 					this.looplist13=[...this.looplist13,...res.data.topLists]
 				})
 			}
@@ -77,6 +77,10 @@ import { Indicator } from 'mint-ui';
 </script>
 
 <style scoped lang="scss">
+$ui-width: 750px;
+@function px2rem($px) {
+    @return $px/$ui-width*7.5rem;
+}
 	#charst{
 		width:100%;
 		.one{
@@ -114,8 +118,8 @@ import { Indicator } from 'mint-ui';
 					flex-direction: column;
 					border:0;
 					img{
-						width:100px;
-						height:100px;
+						width:px2rem(100px);
+						height:px2rem(100px);
 					}
 					p{
 						padding:10px 0;
@@ -151,7 +155,7 @@ import { Indicator } from 'mint-ui';
 					width:100%;
 					display:flex;
 					flex-direction:column;
-					margin-left:30px;
+					margin-left:px2rem(30px);
 					position:relative;
 					h2{
 						font-size:35px;
@@ -160,12 +164,12 @@ import { Indicator } from 'mint-ui';
 						white-space: nowrap;
 						text-overflow: ellipsis;
 						padding: 20px 0;
-						padding-top: 20px;
+						padding-top: px2rem(20px);
 						color:#333;
 					}
 					p{
 						font-size:30px;
-						width:573px;
+						width:px2rem(573px);
 						overflow: hidden;
 						white-space: nowrap;
 						text-overflow: ellipsis;
@@ -174,15 +178,15 @@ import { Indicator } from 'mint-ui';
 					i{
 						font-size:40px;
 						position:absolute;
-						right:30px;
+						right:px2rem(30px);
 						top:40%;
 					}
 				}
 			}
 		}
-		// p{
-		// 	font-size:30px;
-		// 	text-align:center;
-		// }
+		.loading{
+			font-size:30px;
+			text-align:center;
+		}
 	}	
 </style>

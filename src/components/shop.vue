@@ -124,7 +124,7 @@
 
 								<img :src="data.image"/>
 								<p>{{data.title}}</p>
-								<span>点击我查看价格</span>
+								<span @click="suiyi2">点击我查看价格</span>
 							</li>
 						</ul>
 					</div>
@@ -174,7 +174,7 @@ Vue.component('swipe-item', SwipeItem);
 			  text: '加载中...',
 			  spinnerType: 'fading-circle'
 			});
-			axios.get("/Service/callback.mi/PageSubArea/MarketFirstPageNew.api?t=2017842113884520").then(res=>{
+			axios.get("/api/shopone").then(res=>{
 				// console.log(res.data);
 				this.looplist2=res.data.navigatorIcon;
 				this.looplist3=res.data.cellC.list;
@@ -189,7 +189,7 @@ Vue.component('swipe-item', SwipeItem);
 				// console.log(this.looplist2);
 				Indicator.close();
 			}),
-			axios.get(`/Service/callback.mi/ECommerce/RecommendProducts.api?t=20178510261438576&goodsIds=103464&pageIndex=${this.pageIndex}`).then(res=>{
+			axios.get(`/api/shoptwo?&goodsIds=103464&pageIndex=${this.pageIndex}`).then(res=>{
 				console.log(res.data);
 				this.looplist10=res.data.goodsList;
 				this.total=res.data.count
@@ -207,6 +207,9 @@ Vue.component('swipe-item', SwipeItem);
 				console.log(goodsId);
 				router.push(`/detail/${goodsId}`)
 			},
+			suiyi2(){
+				router.push("/myder");
+			},
 			loadMore(){
 				console.log("111");
 				this.pageIndex++;
@@ -214,7 +217,7 @@ Vue.component('swipe-item', SwipeItem);
 					this.msg="已加载完全部数据";
 					return;
 				}
-				axios.get(`/Service/callback.mi/ECommerce/RecommendProducts.api?goodsIds=101391%2C100949%2C100853&pageIndex=${this.pageIndex}`).then(res=>{
+				axios.get(`/api/shoptwo?goodsIds=101391%2C100949%2C100853&pageIndex=${this.pageIndex}`).then(res=>{
 					this.looplist10=[...this.looplist10,...res.data.goodsList]
 				})
 			}
@@ -223,14 +226,18 @@ Vue.component('swipe-item', SwipeItem);
 </script>
 
 <style scoped lang="scss">
+$ui-width: 750px;
+@function px2rem($px) {
+    @return $px/$ui-width*7.5rem;
+}
 #shop{
 	.sousuo{
 			width: 100%;
 			height:px2rem(100px);
 			
 			ul{
-				width:375px;
-				height:61px;
+				width:px2rem(375px);
+				height:px2rem(61px);
 				padding:50px 35px;
 				border-bottom: 1px solid #d8d8d8;
 				display: flex;
@@ -238,8 +245,8 @@ Vue.component('swipe-item', SwipeItem);
 				align-items: center;
 				li{
 					width:40%;
-					height:60px;
-					line-height:60px;
+					height:px2rem(60px);
+					line-height:px2rem(60px);
 					position:relative;
 					p{
 					    width:100%;
@@ -247,37 +254,37 @@ Vue.component('swipe-item', SwipeItem);
 
 					}
 					span{
-						width:30px;
+						width:px2rem(30px);
 						display:inline-block;
 						height:100%;
 						position:absolute;
-						margin-left:60px;
+						margin-left:px2rem(60px);
 					i{
-					  	width:30px;
-					  	height:30px;
+					  	width:px2rem(30px);
+					  	height:px2rem(30px);
 					  	font-size: 50px;
 					  	font-weight: bold;
 					  	color:#1e7dd7;
 					  	position:absolute;
-					  	left:-47px;
-						top: 0px;
+					  	left:px2rem(-47px);
+						top: px2rem(0px);
 					 }
 				}
 			}
 			li:nth-child(2){
 				width:60%;
-				height:30px;
+				height:px2rem(30px);
 				input{
-					width:557px;
-					height:57px;
-					border-radius: 7px;
+					width:px2rem(557px);
+					height:px2rem(57px);
+					border-radius: px2rem(7px);
 					position:absolute;
-					left:-13px;
-					top:-6px;
+					left:px2rem(-13px);
+					top:px2rem(-6px);
 					vertical-align: middle;
 					color: #777;
 					font-size: 25px;
-					padding-left:5px;
+					padding-left:px2rem(5px);
 				}
 			}
 		}	
@@ -286,7 +293,7 @@ Vue.component('swipe-item', SwipeItem);
 	 	background:#fff;
 	 	width:100%;
 		 .my-swipe {
-		  height: 557px;
+		  height: px2rem(557px);
 		  color: #fff;
 		  font-size: 30px;
 		  text-align: center;
@@ -312,12 +319,12 @@ Vue.component('swipe-item', SwipeItem);
 			        padding:19px 0px 19px 0;
 			        img{
 			        	    display: block;
-			        	    width: 96px;
-			        	    height: 96px;
+			        	    width: px2rem(96px);
+			        	    height: px2rem(96px);
 			        }
 			        p {
-			            padding-top: 12px;
-			            padding-left: 12px;
+			            padding-top: px2rem(12px);
+			            padding-left: px2rem(12px);
 			            font-size:25px;
 			            color:#aaa;
 			        }
@@ -327,7 +334,7 @@ Vue.component('swipe-item', SwipeItem);
 	 }
 	 .three{
 	 	width:100%;
-	 	margin-top:30px;
+	 	margin-top:px2rem(30px);
 	 	.top{
 	 		display:flex;
 	 		flex-direction:row;
@@ -357,7 +364,7 @@ Vue.component('swipe-item', SwipeItem);
 	 }
 	 .four{
 	 	width:100%;
-	 	margin-top:30px;
+	 	margin-top:px2rem(30px);
 	 	background:#fff;
 	 	position:relative;
 	 	.one{
@@ -373,21 +380,21 @@ Vue.component('swipe-item', SwipeItem);
 	 				margin:130px 15px 30px 15px;
 	 			img{
 
-	 				width:160px;
-	 				height:160px;
+	 				width:px2rem(160px);
+	 				height:px2rem(160px);
 	 			}
 
 	 			}
 	 			li:last-child{
-	 				margin-right:0px;
-	 				margin-left:0px;
+	 				margin-right:px2rem(0px);
+	 				margin-left:px2rem(0px);
 	 			}
 	 		}
 
 	 	}
 	 	.one-1{
 	 		position:absolute;
-	 		top:296px;
+	 		top:px2rem(296px);
 	 		left:28%;
 	 		font-size:35px;
 	 		text-align: center;
@@ -411,14 +418,14 @@ Vue.component('swipe-item', SwipeItem);
 	 		        img{
 	 		        	
 	 		        	    display: block;
-	 		        	    width: 202px;
-	 		        	    height: 202px;
+	 		        	    width: px2rem(202px);
+	 		        	    height: px2rem(202px);
 	 		        	
 	 		        }
 	 		        p {
 	 		        	width:100%;
-	 		            padding-top: 12px;
-	 		            padding-left: 12px;
+	 		            padding-top: px2rem(12px);
+	 		            padding-left: px2rem(12px);
 	 		            font-size:27px;
 	 		            overflow: hidden;
 	 		            text-overflow: ellipsis; 
@@ -438,14 +445,14 @@ Vue.component('swipe-item', SwipeItem);
 	 		font-size:30px;
 	 		margin:30px 238px;
 	 		background:#f26262;
-	 		border-radius:30px;
-	 		width:270px;
-	 		height:70px;
+	 		border-radius:px2rem(30px);
+	 		width:px2rem(270px);
+	 		height:px2rem(70px);
 	 	}
 	 }
 	 .five{
 	 	width:100%;
-	 	margin-top:30px;
+	 	margin-top:px2rem(30px);
 	 	background:#fff;
 	 	.top-1{
 	 		display:flex;
@@ -458,11 +465,11 @@ Vue.component('swipe-item', SwipeItem);
 	 			font-weight: 100;
 	 			margin:20px 0; 
 	 			i{
-		 			width: 15px;
-		 			height: 40px;
+		 			width: px2rem(15px);
+		 			height: px2rem(40px);
 		 			display: inline-block;
 		 			position: relative;
-		 			margin-right: 15px;
+		 			margin-right: px2rem(15px);
 		 			vertical-align: middle;
 		 			overflow: hidden;
 		 			background: #e16364;
@@ -479,7 +486,7 @@ Vue.component('swipe-item', SwipeItem);
 	 			color:#ccc;
 	 			display: inline-block;
 	 			position: relative;
-	 			margin-right: 15px;
+	 			margin-right: px2rem(15px);
 	 			
 	 			
  			}
@@ -503,14 +510,14 @@ Vue.component('swipe-item', SwipeItem);
 				    align-items: center;
 				    flex-direction: column;
 				    img{
-				    	width:204px;
-				    	height:204px;
+				    	width:px2rem(204px);
+				    	height:px2rem(204px);
 	 				}
 	 				p{
 	 					font-size:25px;
-	 					padding-top: 12px;
-	 					padding-left: 22px;
-	 					width: 190px;
+	 					padding-top: px2rem(12px);
+	 					padding-left: px2rem(22px);
+	 					width: px2rem(190px);
 	 					overflow: hidden;
 	 					text-overflow: ellipsis; 
 	 					white-space: nowrap; 
@@ -528,12 +535,12 @@ Vue.component('swipe-item', SwipeItem);
 	 }
 	 .six{
 	 	width:100%;
-	 	margin-top:30px;
+	 	margin-top:px2rem(30px);
 	 	h3{
 	 		font-size:30px;
 	 		color:#999;
 	 		text-align:center;
-	 		padding-bottom:30px;
+	 		padding-bottom:px2rem(30px);
 	 	}
 	 	ul{
 	 		display:flex;
@@ -549,17 +556,17 @@ Vue.component('swipe-item', SwipeItem);
 	 			align-items: flex-start;
 	 			flex-direction: column;
 	 			background:#fff;
-	 			margin:5px;
+	 			margin:px2rem(5px);
 	 			img{
-	 				width:357px;
-	 				height:370px;
+	 				width:px2rem(357px);
+	 				height:px2rem(370px);
 	 			}
 	 			p{
 	 				font-size:20px;
 	 				color:#333;
 	 				font-weight:100;
-	 				padding-top: 12px;
-	 				padding-left: 20px;
+	 				padding-top: px2rem(12px);
+	 				padding-left: px2rem(20px);
 	 			}
 	 			span{
 	 				font-size:20px;

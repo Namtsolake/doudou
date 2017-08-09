@@ -2,7 +2,7 @@
 	<div class="all">
 		<header>
 			<ul>
-				<li>豆豆网</li>
+				<li id="logo">豆豆网</li>
 				<router-link to="/home" tag="li" activeClass="active">首页</router-link>
 				<router-link to="/tickets" tag="li" activeClass="active">购票</router-link>
 				<router-link to="/shop" tag="li" activeClass="active">商城</router-link>
@@ -90,12 +90,15 @@ $ui-width: 750px;
             .active{
             	color:#fff;
             	border-bottom:9px solid #fff;
+            } 
+             #logo{
+              font-size:40px;
             }          	
            li{
-           	font-size: px2rem(30px);
+           	font-size: 30px;
            	font-weight: bold;
        	   i{
-   		    font-size: px2rem(30px);
+   		    font-size: 30px;
    		    font-weight: bold;
        	   }
            }

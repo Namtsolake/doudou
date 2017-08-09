@@ -68,7 +68,7 @@ import { Indicator } from 'mint-ui';
 			  text: '加载中...',
 			  spinnerType: 'fading-circle'
 			});
-			axios.get("/Service/callback.mi/Showtime/LocationMovies.api?locationId=290&t=2017849115164707").then(res=>{
+			axios.get("/api/indextop").then(res=>{
 				console.log(res.data);
 				this.looplist6=res.data.totalComingMovie;
 				this.looplist=res.data.ms;
@@ -76,7 +76,7 @@ import { Indicator } from 'mint-ui';
 				console.log(this.looplist5);
 				Indicator.close();
 			}),
-			axios.get("/Service/callback.mi/PageSubArea/GetFirstPageAdvAndNews.api?t=20178414274145808").then(res=>{
+			axios.get("/api/indexbottom").then(res=>{
 				console.log(res.data);
 				this.looplist7=res.data.hotPoints;
 			})
@@ -95,17 +95,17 @@ $ui-width: 750px;
 			height:px2rem(100px);
 			
 			ul{
-				width:375px;
-				height:61px;
+				width:100%;
+				height:px2rem(90px);
 				padding:50px 35px;
 				border-bottom: 1px solid #d8d8d8;
 				display: flex;
-				justify-content: space-between;
+				flex-direction:row;
 				align-items: center;
 				li{
-					width:40%;
-					height:60px;
-					line-height:60px;
+					width:20%;
+					height:px2rem(90px);
+					line-height:px2rem(90px);
 					position:relative;
 					p{
 					    width:100%;
@@ -113,43 +113,46 @@ $ui-width: 750px;
 
 					}
 					span{
-						width:30px;
+						width:px2rem(30px);
 						display:inline-block;
 						height:100%;
 						position:absolute;
-						margin-left:60px;
+						top:px2rem(60px);
+						margin-left:px2rem(60px);
 					i{
-					  	width:30px;
-					  	height:30px;
-					  	font-size: px2rem(30px);
+					  	width:px2rem(30px);
+					  	height:px2rem(30px);
+					  	font-size: px30px;
 					  	font-weight: bold;
 					  	color:#000;
 					  	position:absolute;
-					  	left:27px;
-						top: -55px;
+					  	left:px2rem(27px);
+						top: px2rem(-55px);
 					 }
 				}
 			}
 			li:nth-child(2){
-				width:60%;
-				height:30px;
+				width:100%;
+				height:px2rem(90px);
+				display:flex;
+				align-items:center;
 				input{
-					width:537px;
-					height:57px;
-					border-radius: 7px;
-					position:absolute;
-					left:24px;
-					top:-6px;
-					vertical-align: middle;
+					width:90%;
+					height:px2rem(70px);
+					line-height:px2rem(70px);
+					border:2px solid #ccc;
+					border-radius: 15px;
+					display:block;
 					color: #777;
-					font-size: px2rem(25px);
-					padding-left:5px;
+					font-size: px2rem(28px);
+					padding-left:px2rem(50px);
+					margin-left:px2rem(50px);
 				}
 			}
 		}	
 	 }
 	 .nowplaying{
-	 	padding:30px;
+	 	padding:px2rem(30px);
 	 	background: #fff;
 	 	border-bottom: 1px solid #d8d8d8;
 	 	.one{
@@ -171,7 +174,7 @@ $ui-width: 750px;
 	 		justify-content: space-around;
 	 		li{
 	 			width: 25%;
-	 			margin-top:21px;
+	 			margin-top:px2rem(21px);
 	 			display: flex;
 	 			justify-content: center;
 	 			align-items: center;
@@ -182,7 +185,7 @@ $ui-width: 750px;
 	 				height:90%;
 	 			}
 	 			p{
-	 				padding-top: 12px;
+	 				padding-top: px2rem(12px);
 	 				font-size:20px;
 	 				color:#333;
 	 			}
@@ -190,28 +193,28 @@ $ui-width: 750px;
 	 	}
 	 	.three{
 	 		border-top:1px solid #d8d8d8;
-	 		margin-top:25px;
+	 		margin-top:px2rem(25px);
 	 		display: flex;
 	 		justify-content: space-between;
 	 		align-items: center;
 
 	 		h2{ 
-	 			margin-top:17px;
+	 			margin-top:px2rem(17px);
 	 			font-size:40px;
-	 			height:46px;
-	 			line-height:46px;
+	 			height:px2rem(46px);
+	 			line-height:px2rem(46px);
 	 		}
 	 		i{
-	 			margin-top:17px;
+	 			margin-top:px2rem(17px);
 	 			font-size:30px;
 	 		}
 	 	}
 	 }
 	 .today{
 	 	width:100%;
-	 	margin-top:20px;
+	 	margin-top:px2rem(20px);
 	 	background:#fff;
-	 	padding: 30px;
+	 	padding: px2rem(30px);
 	 	h2{
 	 		font-size:40px;
 	 	}
@@ -223,7 +226,7 @@ $ui-width: 750px;
 	 			border-bottom: 1px solid #d8d8d8;
 	 			padding: 41.6px 0 41.6px 0;
 	 			img{
-	 				width:270px;
+	 				width:px2rem(270px);
 	 				border:1px solid #ccc;
 	 			}
 	 			span{
@@ -237,7 +240,7 @@ $ui-width: 750px;
 	 				p{
 	 				font-size: 30px;
 	 				color:#999;
-	 				padding-top:5px;
+	 				padding-top:px2rem(5px);
 	 				}
 	 			}
 	 			
@@ -249,8 +252,8 @@ $ui-width: 750px;
   	}
   	.zhuyi{
   		width:100%;
-  		height:40px;
-  		line-height:40px;
+  		height:px2rem(40px);
+  		line-height:px2rem(40px);
  		ul{
  			display:flex;
  			flex-direction:row;

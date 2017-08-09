@@ -72,8 +72,8 @@ $ui-width: 750px;
 	#tickets{
 		.cs{
 			background:red;
-			width:1000px;
-			height:1000px;
+			width:px2rem(1000px);
+			height:px2rem(1000px);
 			display:block;
 		}
 			.sousuo{
@@ -81,17 +81,17 @@ $ui-width: 750px;
 				height:px2rem(100px);
 				
 				ul{
-					width:375px;
-					height:61px;
+					width:100%;
+					height:px2rem(90px);
 					padding:50px 35px;
 					border-bottom: 1px solid #d8d8d8;
 					display: flex;
-					justify-content: space-between;
+					flex-direction:row;
 					align-items: center;
 					li{
-						width:40%;
-						height:60px;
-						line-height:60px;
+						width:20%;
+						height:px2rem(90px);
+						line-height:px2rem(90px);
 						position:relative;
 						p{
 						    width:100%;
@@ -99,37 +99,40 @@ $ui-width: 750px;
 
 						}
 						span{
-							width:30px;
+							width:px2rem(30px);
 							display:inline-block;
 							height:100%;
 							position:absolute;
-							margin-left:60px;
+							margin-left:px2rem(60px);
+							top:px2rem(60px);
 						i{
-						  	width:30px;
-						  	height:30px;
-						  	font-size: px2rem(30px);
+						  	width:px2rem(30px);
+						  	height:px2rem(30px);
+						  	font-size: 30px;
 						  	font-weight: bold;
 						  	color:#000;
 						  	position:absolute;
-						  	left:27px;
-							top: -55px;
+						  	left:px2rem(27px);
+							top: px2rem(-55px);
 						 }
 					}
 				}
 				li:nth-child(2){
-					width:60%;
-					height:30px;
+					width:100%;
+					height:px2rem(90px);
+					display:flex;
+				align-items:center;
 					input{
-						width:537px;
-						height:57px;
-						border-radius: 7px;
-						position:absolute;
-						left:24px;
-						top:-6px;
-						vertical-align: middle;
-						color: #777;
-						font-size: px2rem(25px);
-						padding-left:5px;
+					width:90%;
+					height:px2rem(70px);
+					line-height:px2rem(70px);
+					border:2px solid #ccc;;
+					border-radius: px2rem(15px);
+					display:block;
+					color: #777;
+					font-size: px2rem(28px);
+					padding-left:px2rem(50px);
+					margin-left:px2rem(50px);
 					}
 				}
 			}	
@@ -139,20 +142,20 @@ $ui-width: 750px;
 		 	width:100%;
 		.header{
 			width:100%;
-			height:100px;
+			height:px2rem(100px);
 			ul{
 				display:flex;
 				justify-content:space-around;
 				align-items:center;
-				height:100px;
-				line-height:100px;
+				height:px2rem(100px);
+				line-height:px2rem(100px);
 				font-size: px2rem(33px);
 				li{
 					position:relative;
 					span{
 						display:inline-block;
 						position:absolute;
-						left:143px;
+						left:px2rem(143px);
 						color:#ccc;
 					}
 
@@ -162,10 +165,10 @@ $ui-width: 750px;
 					span{
 						display:inline-block;
 						position:absolute;
-						left:-45px;
+						left:px2rem(-45px);
 						color:#ccc;
 						i{
-							font-size: px2rem(33px);
+							font-size: 33px;
 						}
 					}
 				}

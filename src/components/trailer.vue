@@ -37,7 +37,7 @@
 				  text: '加载中...',
 				  spinnerType: 'fading-circle'
 				});
-				axios.get(`/Service/callback.mi/PageSubArea/TrailerList.api`).then(res=>{
+				axios.get(`/api/findtrailer`).then(res=>{
 					console.log(res.data);
 					
 					this.looplist13=res.data.trailers;
@@ -52,6 +52,10 @@
 </script>
 
 <style scoped lang="scss">
+$ui-width: 750px;
+@function px2rem($px) {
+    @return $px/$ui-width*7.5rem;
+}
 	#trailer{
 		width:100%;
 		.one{
@@ -73,7 +77,7 @@
 				background:rgba(0,0,0,.7);
 				i{
 					font-size:50px;
-					padding-left:20px;
+					padding-left:px2rem(20px);
 				}
 			}
 		}
@@ -87,15 +91,15 @@
 				.one2{
 					position:relative;
 					img{
-					width:300px;
-					height:180px;
+					width:px2rem(300px);
+					height:px2rem(180px);
 					margin:0 30px;
 					}
 					i{
 						position:absolute;
 						font-size:60px;
-						bottom:10px;
-						right:45px;
+						bottom:px2rem(10px);
+						right:px2rem(45px);
 						z-index:3;
 						color:#fff;
 						font-weight:bold;
@@ -107,25 +111,25 @@
 					flex-direction:column;
 					h2{
 						font-size:35px;
-						width:378px;
+						width:px2rem(378px);
 						overflow: hidden;
 						white-space: nowrap;
 						text-overflow: ellipsis;
 						padding: 30px 0;
-						padding-top: 20px;
+						padding-top: px2rem(20px);
 					}
 					p{
 						font-size:27px;
-						width:358px;
+						width:px2rem(358px);
 						overflow: hidden;
 						white-space: nowrap;
 						text-overflow: ellipsis;
-						margin-left:20px;
+						margin-left:px2rem(20px);
 						color:#444;
 						span{
 							display:inline-block;
 							font-size:27px;
-							margin-right:10px;
+							margin-right:px2rem(10px);
 						}
 					}
 				}

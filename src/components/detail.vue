@@ -22,7 +22,7 @@
 					<ul>
 						<li v-for="(data,index) in looplist11.goods.reviewInfo.reviewInfos" :key="data.id">
 						<div class="one">
-							<img :src="data.headPic">
+							<img v-show="data.headPic" :src="data.headPic">
 							<h5>{{data.nickName}}</h5>
 						</div>
 						<div class="two2">
@@ -68,7 +68,7 @@ import { Indicator } from 'mint-ui';
 			console.log(this.$route.params.id);
 			this.looplist14=this.$route.params.id;
 			console.log(this.looplist14);
-			axios.get(`/Service/callback-mall.mi/product/detail.api?goodsId=${this.$route.params.id}`).then(res=>{
+			axios.get(`/api/detailone?id=${this.$route.params.id}`).then(res=>{
 				console.log(res.data);
 				this.looplist11=res.data.data.productDetail;
 				console.log(this.looplist11.goods.reviewInfo.reviewInfos[0].headPic)
@@ -80,32 +80,36 @@ import { Indicator } from 'mint-ui';
 </script>
 
 <style scoped lang="scss">
+$ui-width: 750px;
+@function px2rem($px) {
+    @return $px/$ui-width*7.5rem;
+}
 #detail{
 	.one{
 		width:100%;
 		background:#fff;
 		.my-swipe {
-	  height: 614px;
-	  color: #fff;
-	  font-size: 30px;
-	  text-align: center;
-	  img{
-	  	width:100%;
-	  }
-	}
+		  height: px2rem(614px);
+		  color: #fff;
+		  font-size: 30px;
+		  text-align: center;
+			  img{
+			  	width:100%;
+			  }
+		}
 	h2{
 		font-size:35px;
 		font-weight:bold;
-		margin:10px;
+		margin:px2rem(10px);
 	}
 	p{	
-		margin:10px;
+		margin:px2rem(10px);
 		font-size:40px;
 		color:#f60;
 		font-weight: 300;
 		span{
 			font-size:30px;
-			margin-left:40px;
+			margin-left:px2rem(40px);
 		}
 	}
 	p:nth-last-child(2){
@@ -121,28 +125,28 @@ import { Indicator } from 'mint-ui';
 	p:nth-last-child(1){
 		font-size:25px;
 		padding:15px 10px;
-		padding-top:5px;
+		padding-top:px2rem(5px);
 		span:first-child{
 			background:url("http://static1.mtime.cn/html5/20170731152519/images/2014/freeshiping.png") no-repeat;
-			width:32px;
-			height:32px;
+			width:px2rem(32px);
+			height:px2rem(32px);
 			display: inline-block;
-			margin-left:10px;
-			margin-top:5px;
+			margin-left:px2rem(10px);
+			margin-top:px2rem(5px);
 		}
 		span:last-child{
-			margin-left:5px;
+			margin-left:px2rem(5px);
 		}
 	}
 	}
 	.two{
 		width:100%;
-		margin-top:30px;
+		margin-top:px2rem(30px);
 		background:#fff;
 		.top{
 			display:flex;
 			justify-content:space-between;
-			padding:20px;
+			padding:px2rem(20px);
 			border-bottom:1px solid #ccc;
 			p{
 				font-size:30px;
@@ -164,15 +168,15 @@ import { Indicator } from 'mint-ui';
 						display:flex;
 						justify-content:flex-start;
 						img{
-							width:76px;
-							height:76px;
+							width:px2rem(76px);
+							height:px2rem(76px);
 							border-radius:50%;
 						}
 						h5{
-							padding-top:10px;
+							padding-top:px2rem(10px);
 							font-size:30px;
 							font-weight:100;
-							padding-left:20px;
+							padding-left:px2rem(20px);
 						}
 					}
 					.two2{
@@ -182,8 +186,8 @@ import { Indicator } from 'mint-ui';
 						}
 						img{
 							padding:20px 0;
-							width:200px;
-							height:200px;
+							width:px2rem(200px);
+							height:px2rem(200px);
 						}
 					}
 				}
@@ -201,7 +205,8 @@ import { Indicator } from 'mint-ui';
 			li{
 				font-size:35px;
 				padding:30px 0;
-				boredr:1px solid #ccc;
+				border-bottom:1px solid #ccc;
+				text-align:center;
 			}
 			.active{
 				border-bottom:5px solid #f60;

@@ -15,6 +15,7 @@ import News from "./Components/news.vue";
 import Trailer from "./Components/trailer.vue";
 import Charst from "./Components/charst.vue";
 import Regist from "./Components/regist.vue";
+import Denglu from "./Components/denglu.vue";
 
 Vue.use(VueRouter)//安装路由功能
 
@@ -44,10 +45,11 @@ const routes = [
       children:[
       { path: '/detail1/:id/pictures', name: 'detail1',component: Pictures},
       { path: '/detail/:id/buy', name: 'detail',component: Buy},
-      { path: '/detail/:id',name: 'detail', redirect: '/detail/:id/pictures' }
+      { path: '/detail/:id',name: 'detail1', redirect: '/detail1/:id/pictures' }
       ]
 },
-{ path: '/regist', component: Regist}
+{ path: '/regist', component: Regist},
+{ path: '/denglu', component: Denglu}
   ]
 
 const router = new VueRouter({

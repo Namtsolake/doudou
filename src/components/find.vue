@@ -16,6 +16,10 @@
 </script>
 
 <style scoped lang="scss">
+$ui-width: 750px;
+@function px2rem($px) {
+    @return $px/$ui-width*7.5rem;
+}
 	#find{
 		width:100%;
 		ul{
@@ -23,10 +27,10 @@
 			width:100%;
 			display: flex;
 			justify-content:space-around;
-			padding:10px;
+			padding:px2rem(10px);
 			li{
 				font-size:30px;
-				padding:10px;
+				padding:px2rem(10px);
 			}
 			.active{
 				color:#1e7dd7;

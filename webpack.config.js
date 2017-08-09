@@ -4,7 +4,7 @@ var webpack = require('webpack')
 module.exports = {
   entry: './src/main.js',
   output: {
-    path: path.resolve(__dirname, './dist'),
+    path: path.resolve(__dirname, '../myapp/public/dist'),
     publicPath: '/dist/',
     filename: 'build.js'
   },
@@ -59,14 +59,14 @@ module.exports = {
     historyApiFallback: true,
     noInfo: true,
     proxy: {
-            '/Service/callback.mi/*': {
-                target: 'http://m.mtime.cn',
-                host: 'm.mtime.cn',
-                changeOrigin:true
+            '/api/*': {
+                   target: 'http://10.2.154.129:8083',
+                   host: '10.2.154.129:8083',
+                   changeOrigin:true
             },
-            '/Service/callback-mall.mi': {
-                target: 'http://m.mtime.cn',
-                host: 'm.mtime.cn',
+            '/users/*': {
+                target: 'http://10.2.154.129:8083',
+                host: '10.2.154.129:8083',
                 changeOrigin:true
             }
       }

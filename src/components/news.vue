@@ -37,7 +37,7 @@ import { Indicator } from 'mint-ui';
 			  text: '加载中...',
 			  spinnerType: 'fading-circle'
 			});
-			axios.get(`/Service/callback.mi/News/NewsList.api?pageIndex=${this.pageIndex}`).then(res=>{
+			axios.get(`/api/findnew?pageIndex=${this.pageIndex}`).then(res=>{
 				console.log(res.data);
 				this.total=res.data.totalCount;
 				this.looplist13=res.data.newsList;
@@ -53,7 +53,7 @@ import { Indicator } from 'mint-ui';
 					this.msg="没有数据了";
 					return
 				}
-				axios.get(`/Service/callback.mi/News/NewsList.api?pageIndex=${this.pageIndex}`).then(res=>{
+				axios.get(`/api/findnew?pageIndex=${this.pageIndex}`).then(res=>{
 					this.looplist13=[...this.looplist13,...res.data.newsList]
 				})
 			}
@@ -63,6 +63,10 @@ import { Indicator } from 'mint-ui';
 </script>
 
 <style scoped lang="scss">
+$ui-width: 750px;
+@function px2rem($px) {
+    @return $px/$ui-width*7.5rem;
+}
 	#news{
 		width:100%;
 		.one{
@@ -92,8 +96,8 @@ import { Indicator } from 'mint-ui';
 				padding:40px 0;
 				border-bottom: 1px solid #ccc;
 				img{
-					width:200px;
-					height:180px;
+					width:px2rem(200px);
+					height:px2rem(180px);
 					margin:0 30px;
 				}
 				.two{
@@ -101,23 +105,23 @@ import { Indicator } from 'mint-ui';
 					flex-direction:column;
 					h2{
 						font-size:35px;
-						width:450px;
+						width:px2rem(450px);
 						overflow: hidden;
 						white-space: nowrap;
 						text-overflow: ellipsis;
 						padding: 30px 0;
-						padding-top: 20px;
+						padding-top: px2rem(20px);
 					}
 					p{
 						font-size:25px;
-						width:430px;
+						width:px2rem(430px);
 						overflow: hidden;
 						white-space: nowrap;
 						text-overflow: ellipsis;
 						span{
 							display:inline-block;
 							font-size:27px;
-							margin-right:10px;
+							margin-right:px2rem(10px);
 						}
 					}
 				}
